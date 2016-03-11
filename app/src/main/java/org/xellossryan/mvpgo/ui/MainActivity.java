@@ -2,6 +2,7 @@ package org.xellossryan.mvpgo.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -25,7 +26,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements Otometachi {
 
     @Bind(R.id.recyclerViewOtome)
-    UltimateRecyclerView recyclerViewOtome;
+    RecyclerView recyclerViewOtome;
     OtomeTachiAdapter otomeTachiAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +37,6 @@ public class MainActivity extends AppCompatActivity implements Otometachi {
         setSupportActionBar(toolbar);
         otomeTachiAdapter = new OtomeTachiAdapter();
         recyclerViewOtome.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.HORIZONTAL));
-        recyclerViewOtome.setRefreshing(true);
-        recyclerViewOtome.enableLoadmore();
-        recyclerViewOtome.setAdapter(otomeTachiAdapter);
     }
 
     @Override
