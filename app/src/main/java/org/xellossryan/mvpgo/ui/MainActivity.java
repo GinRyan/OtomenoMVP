@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements Otometachi {
         otomeTachiAdapter = new OtomeTachiAdapter();
         recyclerViewOtome.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.HORIZONTAL));
         recyclerViewOtome.setRefreshing(true);
+        recyclerViewOtome.enableLoadmore();
         recyclerViewOtome.setAdapter(otomeTachiAdapter);
     }
 
