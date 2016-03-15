@@ -40,7 +40,7 @@ public class OtomeTachiAdapter extends RecyclerView.Adapter<OtomeTachiAdapter.VH
 
     @Override
     public void onBindViewHolder(VH holder, int position) {
-        holder.name.setText(getItem(position).who + " " + getItem(position).desc);
+        holder.name.setText(getItem(position).desc);
         Glide.with(context)
                 .load(getItem(position).url)
                 .centerCrop()

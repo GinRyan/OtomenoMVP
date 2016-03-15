@@ -5,7 +5,7 @@ import org.xellossryan.mvpgo.entity.WildOtome;
 import java.util.List;
 
 /**
- * 少女们
+ * 少女们的数据操作回调
  * <p/>
  * Created by Liang on 2016/3/11.
  */
