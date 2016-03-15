@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements Otometachi {
             }
         });
         mOtomePresenter.refresh();
+        swipeRefreshLayout.setRefreshing(true);
     }
 
     @Override
