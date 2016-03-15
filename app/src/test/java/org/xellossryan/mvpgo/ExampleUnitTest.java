@@ -1,5 +1,7 @@
 package org.xellossryan.mvpgo;
 
+import com.google.gson.Gson;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -9,7 +11,15 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+    public void testJson(){
+        WildOtome po = new WildOtome();
+        po.createdAt = "2016-01-05";
+        po.desc = "otome ";
+        po.used = true;
+        po.who = "张学友";
+        po.otome = new WildOtome();
+        po.otome.who = "郭富城";
+        po.otome.desc = "我是郭富城 ";
+        System.out.print( new Gson().toJson(po));
     }
 }

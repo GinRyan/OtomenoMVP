@@ -1,4 +1,4 @@
-package org.xellossryan.mvpgo.entity;
+package org.xellossryan.mvpgo;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
@@ -16,20 +16,6 @@ import java.util.List;
  * Created by Liang on 2016/3/11.
  */
 public class WildOtome {
-
-    /**
-     * _id : 56e220ca67765966681b3a23
-     * _ns : ganhuo
-     * createdAt : 2016-03-11T09:35:06.879Z
-     * desc : 3.11--一周年快乐！！！
-     * publishedAt : 2016-03-11T12:37:20.4Z
-     * source : chrome
-     * type : 福利
-     * url : http://ww4.sinaimg.cn/large/7a8aed7bjw1f1so7l2u60j20zk1cy7g9.jpg
-     * used : true
-     * who : 张涵宇
-     */
-
     @SerializedName("_id")
     public String id;
     @SerializedName("_ns")
@@ -50,6 +36,9 @@ public class WildOtome {
     public boolean used;
     @SerializedName("who")
     public String who;
+
+    @SerializedName("otome")
+    public WildOtome otome;
 
     /**
      * 数据到单个对象
