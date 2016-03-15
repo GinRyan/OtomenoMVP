@@ -1,0 +1,2 @@
+# OtomenoMVP
+OtomenoMVP是我个人在学习MVP模式时写的一个小Demo项目，感谢Gank.IO无条件提供妹子图的API
