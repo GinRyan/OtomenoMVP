@@ -12,8 +12,7 @@
         <ImageView
             android:id="@+id/ivOtome"
             android:layout_width="112dp"
-            android:layout_height="match_parent"
-            android:background="#FFF" />
+            android:layout_height="match_parent" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,7 +26,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="张涵予"
                 android:textColor="@android:color/white" />
         </LinearLayout>
     </FrameLayout>

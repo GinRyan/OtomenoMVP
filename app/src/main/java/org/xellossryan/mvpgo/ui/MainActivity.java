@@ -18,7 +18,6 @@ import org.xellossryan.mvpgo.mvp.presenters.OtomePresenter;
 import org.xellossryan.mvpgo.mvp.views.Otometachi;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -60,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements Otometachi {
                 swipeRefreshLayout.setRefreshing(true);
             }
         });
+        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_green_light, android.R.color.holo_red_light, android.R.color.holo_orange_light);
         recyclerViewOtome.addOnScrollListener(new RecyclerView.OnScrollListener() {
             int[] tailItems = new int[3];
 
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements Otometachi {
     @Override
     public void onNetworkUnavailable(Throwable t) {
         Snackbar.make(swipeRefreshLayout, "出错:" + t.getLocalizedMessage(), Snackbar.LENGTH_LONG).show();
-        Log.d(this.getClass().toString(),t.getLocalizedMessage());
+        Log.d(this.getClass().toString(), t.getLocalizedMessage());
         swipeRefreshLayout.setRefreshing(false);
     }
 
