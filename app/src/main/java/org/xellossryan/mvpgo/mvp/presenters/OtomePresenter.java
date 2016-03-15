@@ -1,14 +1,11 @@
 package org.xellossryan.mvpgo.mvp.presenters;
 
-import org.xellossryan.mvpgo.api.GankIO;
-import org.xellossryan.mvpgo.api.GankIOBuildFacade;
 import org.xellossryan.mvpgo.entity.OtomeResult;
+import org.xellossryan.mvpgo.mvp.DataRequestCallback;
 import org.xellossryan.mvpgo.mvp.model.AbsOtomeTachiModel;
 import org.xellossryan.mvpgo.mvp.model.NetworkAsyncOtomeTachiModel;
 import org.xellossryan.mvpgo.mvp.views.Otometachi;
 
-import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
@@ -19,42 +16,41 @@ import retrofit2.Response;
 public class OtomePresenter {
     AbsOtomeTachiModel absOtomeTachiModel;
     private Otometachi otometachi;
-    GankIO gankIO = null;
+
     int page = 1;
 
     public OtomePresenter(Otometachi otometachi) {
         this.otometachi = otometachi;
         absOtomeTachiModel = new NetworkAsyncOtomeTachiModel();
-        gankIO = GankIOBuildFacade.create();
+
     }
 
     public void refresh() {
         page = 1;
-        Call<OtomeResult> listCall = gankIO.listOtome(page + "");
-        listCall.enqueue(new Callback<OtomeResult>() {
+        absOtomeTachiModel.query(page, new DataRequestCallback() {
             @Override
-            public void onResponse(Call<OtomeResult> call, Response<OtomeResult> response) {
-                otometachi.onLoadingFinished(page, response.body().getResults());
+            public void onDataResponse(Object object) {
+                otometachi.onLoadingFinished(page, ((Response<OtomeResult>) object).body().getResults());
             }
 
             @Override
-            public void onFailure(Call<OtomeResult> call, Throwable t) {
+            public void onDataFailure(Throwable t) {
                 otometachi.onNetworkUnavailable(t);
             }
         });
+
     }
 
     public void loadNext() {
         page++;
-        Call<OtomeResult> listCall = gankIO.listOtome(page + "");
-        listCall.enqueue(new Callback<OtomeResult>() {
+        absOtomeTachiModel.query(page, new DataRequestCallback() {
             @Override
-            public void onResponse(Call<OtomeResult> call, Response<OtomeResult> response) {
-                otometachi.onLoadingFinished(page, response.body().getResults());
+            public void onDataResponse(Object object) {
+                otometachi.onLoadingFinished(page, ((Response<OtomeResult>) object).body().getResults());
             }
 
             @Override
-            public void onFailure(Call<OtomeResult> call, Throwable t) {
+            public void onDataFailure(Throwable t) {
                 page--;
                 otometachi.onNetworkUnavailable(t);
             }

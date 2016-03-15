@@ -15,6 +15,6 @@ public interface DataRequestCallback<T> {
     /**
      * 数据请求失败
      */
-    void onDataFailure();
+    void onDataFailure(Throwable t);
 
 }
