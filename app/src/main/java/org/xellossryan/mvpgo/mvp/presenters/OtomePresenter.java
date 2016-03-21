@@ -1,10 +1,13 @@
 package org.xellossryan.mvpgo.mvp.presenters;
 
 import org.xellossryan.mvpgo.entity.OtomeResult;
+import org.xellossryan.mvpgo.entity.WildOtome;
 import org.xellossryan.mvpgo.mvp.DataRequestCallback;
 import org.xellossryan.mvpgo.mvp.model.AbsOtomeTachiModel;
 import org.xellossryan.mvpgo.mvp.model.NetworkAsyncOtomeTachiModel;
 import org.xellossryan.mvpgo.mvp.views.Otometachi;
+
+import java.util.List;
 
 import retrofit2.Response;
 
@@ -43,10 +46,10 @@ public class OtomePresenter {
 
     public void loadNext() {
         page++;
-        absOtomeTachiModel.query(page, new DataRequestCallback() {
+        absOtomeTachiModel.queryRx(page, new DataRequestCallback() {
             @Override
             public void onDataResponse(Object object) {
-                otometachi.onLoadingFinished(page, ((Response<OtomeResult>) object).body().getResults());
+                otometachi.onLoadingFinished(page, ((List<WildOtome>) object));
             }
 
             @Override

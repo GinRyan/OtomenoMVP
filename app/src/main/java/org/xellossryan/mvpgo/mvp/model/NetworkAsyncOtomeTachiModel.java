@@ -8,6 +8,11 @@ import org.xellossryan.mvpgo.mvp.DataRequestCallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import rx.Observable;
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 /**
  * 少女们数据模型和数据操作
@@ -34,5 +39,35 @@ public class NetworkAsyncOtomeTachiModel implements AbsOtomeTachiModel {
                 callback.onDataFailure(t);
             }
         });
+    }
+
+    @Override
+    public void queryRx(int page, final DataRequestCallback callback) {
+        Observable<OtomeResult> otomeRx = gankIO.listOtomeRx(page + "");
+        otomeRx.observeOn(AndroidSchedulers.mainThread())
+                .doOnNext(new Action1<OtomeResult>() {
+                    @Override
+                    public void call(OtomeResult otomeResult) {
+                        callback.onDataResponse(otomeResult.getResults());
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Observer<OtomeResult>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        callback.onDataFailure(e);
+                    }
+
+                    @Override
+                    public void onNext(OtomeResult otomeResult) {
+
+                    }
+                });
+
     }
 }

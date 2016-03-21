@@ -8,4 +8,5 @@ import org.xellossryan.mvpgo.mvp.DataRequestCallback;
  */
 public interface AbsOtomeTachiModel {
     void query(int page, DataRequestCallback callback);
+    void queryRx(int page, DataRequestCallback callback);
 }
