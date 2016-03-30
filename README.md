@@ -32,7 +32,7 @@ OtomenoMVP是我个人在学习MVP模式时写的一个小Demo项目，感谢dai
 	    4、Glide
 	    5、Retrofit2，Square的众多优秀开源项目中的一枚新星
         6、RxJava，一个为Java设计的酷炫的异步函数式调用库，Rx思想来自于微软
-        
+        7、Dagger2，一个前Square的DI框架，现今该项目被Google招安，此次更新增加了Dagger2的一个简单范例。
 关于开源协议
 ----
 	

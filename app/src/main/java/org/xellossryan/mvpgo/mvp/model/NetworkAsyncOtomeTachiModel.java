@@ -1,9 +1,11 @@
 package org.xellossryan.mvpgo.mvp.model;
 
 import org.xellossryan.mvpgo.api.GankIO;
-import org.xellossryan.mvpgo.api.GankIOBuildFacade;
+import org.xellossryan.mvpgo.app.GlobalApplication;
 import org.xellossryan.mvpgo.entity.OtomeResult;
 import org.xellossryan.mvpgo.mvp.DataRequestCallback;
+
+import javax.inject.Inject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,10 +21,11 @@ import rx.schedulers.Schedulers;
  * Created by Liang on 2016/3/11.
  */
 public class NetworkAsyncOtomeTachiModel implements AbsOtomeTachiModel {
+    @Inject
     GankIO gankIO = null;
 
     public NetworkAsyncOtomeTachiModel() {
-        gankIO = GankIOBuildFacade.create();
+        GlobalApplication.getCommonComponent().inject(this);
     }
 
     @Override
