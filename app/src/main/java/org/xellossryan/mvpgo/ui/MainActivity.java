@@ -19,7 +19,7 @@ import org.xellossryan.mvpgo.mvp.views.Otometachi;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -27,9 +27,9 @@ import butterknife.ButterKnife;
  */
 public class MainActivity extends AppCompatActivity implements Otometachi {
 
-    @Bind(R.id.recyclerViewOtome)
+    @BindView(R.id.recyclerViewOtome)
     RecyclerView recyclerViewOtome;
-    @Bind(R.id.swipeRefreshLayout)
+    @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout swipeRefreshLayout;
 
     OtomeTachiAdapter otomeTachiAdapter;
